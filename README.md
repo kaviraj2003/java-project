@@ -1,1 +1,3 @@
 # java-project
+
+This is a java project and the instructions to setup will be release soon......
