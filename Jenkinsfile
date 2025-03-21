@@ -18,10 +18,15 @@ pipeline{
         stage('Clone the repo'){
             steps{
                 script{
-                    bat '"C:/Users/nkj408/AppData/Local/Programs/Git/bin/git.exe" clone https://github.com/kaviraj2003/java-project.git'
+                    withCredentials([usernamePassword(credentialsId: 'Kavi-git', passwordVariable: 'GIT_CREDEN_PWD', usernameVariable: 'GIT_CREDEN_USR')]) {
+                    bat 'rmdir /s /q java-project'  // Ensure clean clone
+                        retry(3) {
+                            bat 'git clone --depth 1 https://${GIT_CREDEN_USR}:${GIT_CREDEN_PWD}@github.com/kaviraj2003/java-project.git'
+                        }
                     dir('java-project'){
                         bat '"C:/Users/nkj408/AppData/Local/Programs/Git/bin/git.exe" checkout main'
                         bat '"C:/Users/nkj408/AppData/Local/Programs/Git/bin/git.exe" pull origin main'
+                    }
                     }
                 }
             }
