@@ -4,7 +4,7 @@ pipeline{
         string(name:'Branch_name',defaultValue:'dev-main',description:'Enter the new branch name:')
     }
     options{
-        discardConcurrentbuilds()
+        discardConcurrentBuilds()
         retry(4)
     }
     stages{
