@@ -3,6 +3,9 @@ pipeline{
     parameters{
         string(name:'Branch_name',defaultValue:'dev-main',description:'Enter the new branch name:')
     }
+    options{
+        retry(4)
+    }
     stages{
         stage('cleaning the workspace'){
             steps{
