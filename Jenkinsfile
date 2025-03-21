@@ -14,7 +14,7 @@ pipeline{
         stage('Clone the repo'){
             steps{
                 script{
-                    bat '"C:/Users/nkj408/AppData/Local/Programs/Git/bin/git.exe" clone https://github.com/kaviraj2003/java-project.git'
+                    bat 'git clone https://github.com/kaviraj2003/java-project.git'
                     dir('java-project'){
                         bat '"C:/Users/nkj408/AppData/Local/Programs/Git/bin/git.exe" checkout main'
                         bat '"C:/Users/nkj408/AppData/Local/Programs/Git/bin/git.exe" pull origin main'
